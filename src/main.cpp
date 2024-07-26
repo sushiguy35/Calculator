@@ -90,6 +90,52 @@ int main(int, char**)
     io.IniFilename = nullptr;
     EMSCRIPTEN_MAINLOOP_BEGIN
 #else
+
+    int num1;
+    int num2;
+    char op;
+    int sum = 0;
+
+    printf("first num: ");
+    scanf("%d", &num1);
+    printf("second num: ");
+    scanf("%d", &num2);
+    printf("op: ");
+    while ((getchar()) != '\n'); // Clear the input buffer
+    op = getchar();
+
+
+    switch(op)
+    {
+        case '*':
+            sum = num1 * num2;
+            break;
+
+        case '+':
+            sum = num1 + num2;
+            break;
+
+        case '-':
+            sum = num1 - num2;
+            break;
+
+        case '/':
+            if (num2 != 0) {
+                sum = num1 / num2;
+            } else {
+                printf("Error: Division by zero\n");
+                return 1; // Exit the program with an error code
+            }
+            break;
+
+        default:
+        printf("Error: Invalid operator\n");
+            break;
+    }
+
+    printf("answer is %d\n", sum);
+
+
     while (!glfwWindowShouldClose(window))
 #endif
     {
